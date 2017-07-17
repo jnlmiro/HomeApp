@@ -1,0 +1,79 @@
+{
+  "hasResultData": true,
+  "hasStopPointDeviations": false,
+  "lastUpdate": "01:22",
+  "groups": [
+    {
+      "name": "BusGroups",
+      "groupId": "Ropsten#10032",
+      "currentServerTime": "01:23",
+      "title": "Ropsten",
+      "transportSymbol": "BUS_red",
+      "type": "Bus",
+      "departures": [
+        {
+          "destination": "Kottla via centrum",
+          "deviations": [],
+          "displayTime": "5 min",
+          "expectedDateTime": "2017-07-09T01:29:00",
+          "lineNumber": "201",
+          "stopPointNumber": "20201"
+        },
+        {
+          "destination": "Rudboda",
+          "deviations": [],
+          "displayTime": "7 min",
+          "expectedDateTime": "2017-07-09T01:31:00",
+          "lineNumber": "293",
+          "stopPointNumber": "20601"
+        },
+        {
+          "destination": "Gåshaga",
+          "deviations": [],
+          "displayTime": "01:33",
+          "expectedDateTime": "2017-07-09T01:33:00",
+          "lineNumber": "291",
+          "stopPointNumber": "20201"
+        },
+        {
+          "destination": "Rudboda",
+          "deviations": [],
+          "displayTime": "02:01",
+          "expectedDateTime": "2017-07-09T02:01:00",
+          "lineNumber": "293",
+          "stopPointNumber": "20601"
+        },
+        {
+          "destination": "Gåshaga",
+          "deviations": [],
+          "displayTime": "02:03",
+          "expectedDateTime": "2017-07-09T02:03:00",
+          "lineNumber": "291",
+          "stopPointNumber": "20201"
+        },
+        {
+          "destination": "Sticklinge via centrum",
+          "deviations": [],
+          "displayTime": "02:03",
+          "expectedDateTime": "2017-07-09T02:03:00",
+          "lineNumber": "205",
+          "stopPointNumber": "20901"
+        }
+      ]
+    },
+    {
+      "name": "MetroGroups",
+      "title": "",
+      "type": "Metro",
+      "departures": [
+        {
+          "destination": "Norsborg",
+          "deviations": [],
+          "displayTime": "Nu",
+          "lineNumber": "13",
+          "stopPointNumber": "100"
+        }
+      ]
+    }
+  ]
+}
