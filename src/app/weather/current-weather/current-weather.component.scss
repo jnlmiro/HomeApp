@@ -1,0 +1,71 @@
+
+@mixin weather-background-img($imgname) {
+  background: url("'../../../assets/images/weather/#{$imgname}") no-repeat 0 0;
+  display: inline-block;
+  min-height: 62px;
+  min-width: 62px;
+  background-size: 100% 100%;
+}
+
+
+.current-weather {
+  .info {
+    color: #757575;
+    font-size: small;
+    p {
+      margin: 0;
+    }
+    .city {
+      font-size: large;
+    }
+    .temperature {
+      font-size: x-large;
+      color: #000;
+      font-weight: bold;
+      padding-left: 20px;
+      &:after {
+        content: "	\002103";
+      }
+    }
+  }
+
+  .weather-img {
+    &.clear-sky {
+      @include weather-background-img("clear.svg");
+    }
+
+    &.nearly-clear-sky {
+      @include weather-background-img("mostlysunny.svg");
+
+    }
+
+    &.variable-cloudiness {
+      @include weather-background-img("partlycloudy.svg");
+    }
+
+    &.halfclear-sky {
+      @include weather-background-img("mostlycloudy.svg");
+    }
+
+    &.cloudy-sky {
+      @include weather-background-img("cloudy.svg");
+    }
+
+    &.fog {
+      @include weather-background-img("fog.svg");
+    }
+
+
+    &.change-of-rain {
+      @include weather-background-img("chancerain.svg");
+    }
+
+    &.rain {
+      @include weather-background-img("rain.svg");
+    }
+
+  }
+
+}
+
+

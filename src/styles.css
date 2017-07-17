@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+.left-bordered {
+  border-left: 1px solid #e0e0e0;
+}
+
+a:hover {
+  cursor: default;
+}
+

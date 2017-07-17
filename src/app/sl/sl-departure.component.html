@@ -1,0 +1,22 @@
+<div>
+  <h4>{{stationName}}</h4>
+  <ul *ngIf="slDeparture">
+    <li *ngFor="let departureGroup of slDeparture.groups">
+      <div *ngIf="departureGroup.departures.length">
+        <div>
+          <h5>{{departureGroup.type}}</h5>
+        </div>
+        <div>
+          <div *ngFor="let departure of departureGroup.departures" class="row">
+            <div class="{{shouldAlert(departure)? 'red-text darken-2':''}} valign-wrapper col s12">
+              <span class="departure-image {{getTransportationImageClass(departureGroup)}}"></span>
+              {{departure.destination}} - {{departure.displayTime}}
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

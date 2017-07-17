@@ -1,0 +1,21 @@
+
+
+
+.departure-image.bus, .departure-image.metro {
+  height: 20px;
+  width: 20px;
+  background-size: 20px 20px;
+  margin: 0 5px 0 5px;
+  padding: 0 10px 0 10px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.metro {
+  background: url("../../assets/images/sl/metro.png");
+}
+
+.bus {
+  background: url("../../assets/images/sl/bus.png");
+}
