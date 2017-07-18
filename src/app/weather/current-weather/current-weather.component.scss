@@ -56,7 +56,7 @@
     }
 
 
-    &.change-of-rain {
+    &.chance-of-rain {
       @include weather-background-img("chancerain.svg");
     }
 
@@ -64,6 +64,29 @@
       @include weather-background-img("rain.svg");
     }
 
+    &.thunderstorm {
+      @include weather-background-img("tstorms.svg");
+    }
+
+    &.thunder {
+      @include weather-background-img("thunder.svg");
+    }
+
+    &.chancesleet {
+      @include weather-background-img("chancesleet.svg");
+    }
+
+    &.sleet {
+      @include weather-background-img("sleet.svg");
+    }
+
+    &.chancesnow {
+      @include weather-background-img("chancesnow.svg")
+    }
+
+    &.snow {
+      @include weather-background-img("snow.svg")
+    }
   }
 
 }
