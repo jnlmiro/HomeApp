@@ -23,8 +23,12 @@ export class SlDepartureComponent implements OnInit, OnDestroy {
 
   slDeparture: SlDeparture;
   updateInterval: number;
+  departureGroupType:string;
 
   @Input() stationName: string;
+  @Input() set depGroupType(groupType:string) {
+    this.departureGroupType = groupType;
+  }
 
   constructor(private slDepartureService: SlDepartureService) {
     this.updateInterval = setInterval(() => this.getDepartures(this.stationName), 30000)
