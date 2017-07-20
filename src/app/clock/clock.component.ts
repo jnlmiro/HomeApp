@@ -2,7 +2,7 @@
  * Created by jorgma on 2017-07-09.
  */
 import * as moment from 'moment';
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, NgZone} from '@angular/core';
 
 @Component({
   selector: 'clock',
@@ -14,7 +14,7 @@ export class ClockComponent implements OnInit, OnDestroy {
   currentTime: any;
   intervalId: number;
 
-  constructor() {
+  constructor(private zone:NgZone) {
   }
 
   ngOnInit() {
@@ -25,6 +25,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
   public updateCurrentTime() {
     this.currentTime = moment().format('LTS');
+    this.zone.run(() => {});
   }
 
   ngOnDestroy(): void {
