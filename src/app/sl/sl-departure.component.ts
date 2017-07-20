@@ -4,11 +4,20 @@
 import {Component, OnInit, OnDestroy, Input} from "@angular/core";
 import {SlDepartureService} from "./sl-departure.service";
 import {SlDeparture, Departure, Group} from "./sl-departure.model";
+import {style, animate, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'sl-departure',
   templateUrl: 'sl-departure.component.html',
-  styleUrls: ['sl-departure.component.scss']
+  styleUrls: ['sl-departure.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: '0' }),
+        animate('.5s ease-out', style({ opacity: '1' })),
+      ]),
+    ]),
+  ],
 })
 export class SlDepartureComponent implements OnInit, OnDestroy {
 

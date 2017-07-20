@@ -12,8 +12,8 @@ const STATIONS = {
 };
 
 const TYPES = {
-  'BusGroups': 'Bus',
-  'MetroGroups': 'Metro'
+  'BusGroups': 'Buss',
+  'MetroGroups': 'Tunnelbana'
 };
 
 

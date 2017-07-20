@@ -1,7 +1,7 @@
 <div>
-  <h4>{{stationName}}</h4>
+  <h4 class="bluish">{{stationName}}</h4>
   <ul *ngIf="slDeparture">
-    <li *ngFor="let departureGroup of slDeparture.groups">
+    <li [@fadeIn]="''" *ngFor="let departureGroup of slDeparture.groups">
       <div *ngIf="departureGroup.departures.length">
         <div>
           <h5>{{departureGroup.type}}</h5>

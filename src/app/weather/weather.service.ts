@@ -8,7 +8,8 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 import {WeatherForecast, Geometry, TimeSeries, Parameters, PARAMS} from "./weather.model";
-import * as moment from 'moment';
+import * as moment from "moment";
+import 'rxjs/add/operator/map';
 
 
 const LAT = 59.3293;
@@ -25,8 +26,8 @@ export class WeatherService {
 
 
   public getWeatherForecast() {
-    return this.http.get(this.url).toPromise()
-      .then((res)=> this.mapForecast(res));
+    return this.http.get(this.url)
+      .map((res)=> this.mapForecast(res));
   }
 
 
@@ -108,7 +109,6 @@ export class WeatherService {
     }
     return forecastParametersArr
   }
-
 
   private isTimeSeriesInRange(forecastTimeSeries: TimeSeries, hoursDiff: number = 12): boolean {
     let limit = moment().add(hoursDiff, 'h');

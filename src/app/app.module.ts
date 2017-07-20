@@ -5,7 +5,7 @@ import {AppComponent} from "./app.component";
 import {PageNotFoundComponent} from "./page-not-found.component";
 import {appRouting} from "./app.routing";
 import {EntryBoardModule} from "./entry-board/entry-board.module";
-import {SlDepartureModule} from "./sl/sl-departure.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import {SlDepartureModule} from "./sl/sl-departure.module";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     MaterializeModule,
     EntryBoardModule,
     appRouting,

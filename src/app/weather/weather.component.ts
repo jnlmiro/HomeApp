@@ -2,18 +2,18 @@
  * Created by jorgma on 2017-07-09.
  */
 
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, NgZone} from "@angular/core";
 import {WeatherService} from "./weather.service";
-import {WeatherForecast, TimeSeries} from "./weather.model";
+import {WeatherForecast} from "./weather.model";
 
 @Component({
   selector: 'weather',
   templateUrl: 'weather.component.html'
 })
 export class WeatherComponent implements OnInit {
-  weatherForecast: WeatherForecast;
+  weatherForecast: WeatherForecast = new WeatherForecast();
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService, private zone:NgZone) {
   }
 
   ngOnInit() {
@@ -23,9 +23,10 @@ export class WeatherComponent implements OnInit {
 
   public getWeatherForecast() {
     this.weatherService.getWeatherForecast()
-      .then((weatherForecast) => {
+      .subscribe((weatherForecast) => {
         this.weatherForecast = weatherForecast;
-        console.log(this.weatherForecast);
+        /*WTF is making things go out of NG2*/
+        this.zone.run(() => {});
       });
   }
 
