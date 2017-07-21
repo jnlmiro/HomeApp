@@ -2,18 +2,18 @@
   <div class="col s12">
     <div class="info">
       <p class="city">Stockholm</p>
-      <p>{{weather.currentTimeSeries.validTime | date:"yyyy-MM-dd HH:mm" }}</p>
-      <div class="weather-status"><p>{{weather_symbol[weather.currentTimeSeries.parameters.Wsymb2.value].name.se}}</p></div>
+      <p>{{currentTimeSeries.validTime | date:"yyyy-MM-dd HH:mm" }}</p>
+      <div class="weather-status"><p>{{weather_symbol[currentTimeSeries.parameters.Wsymb2.value].name.se}}</p></div>
 
       <div class="row">
         <div class="col s6">
           <div class="valign-wrapper">
             <div class="">
           <span
-            class="weather-img {{weather_symbol[weather.currentTimeSeries.parameters.Wsymb2.value].imgclass}}"></span>
+            class="weather-img {{weather_symbol[currentTimeSeries.parameters.Wsymb2.value].imgclass}}"></span>
             </div>
           <div class="">
-            <span class="temperature">{{weather.currentTimeSeries.parameters.t.value}}</span>
+            <span class="temperature">{{currentTimeSeries.parameters.t.value}}</span>
           </div>
           </div>
         </div>
