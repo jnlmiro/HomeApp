@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check",
     "build": "ng build --base-href . && cp src/electron/* dist",
     "electron-start": "npm run build && electron dist",
     "test": "ng test",

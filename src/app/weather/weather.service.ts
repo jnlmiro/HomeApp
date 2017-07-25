@@ -25,13 +25,13 @@ export class WeatherService {
   }
 
 
-  public getWeatherForecast() {
-    return this.http.get(this.url)
-      .map((res)=> this.mapForecast(res));
+  public getWeatherForecast():Promise<any> {
+    return this.http.get(this.url).toPromise();
+
   }
 
 
-  private mapForecast(res: any): WeatherForecast {
+  public mapForecast(res: any): Promise<WeatherForecast> {
     let forecast = res.json();
     let weatherForecast = new WeatherForecast();
     weatherForecast.approvedTime = forecast.approvedTime;
@@ -40,7 +40,7 @@ export class WeatherService {
     weatherForecast.geometry = this.mapGeometry(forecast);
     weatherForecast.timeSeries = this.mapTimeSeries(forecast.timeSeries);
     weatherForecast.currentTimeSeries = this.getCurrentWeather(weatherForecast);
-    return weatherForecast;
+    return Promise.resolve(weatherForecast);
   }
 
 
@@ -59,8 +59,8 @@ export class WeatherService {
 
     for (let i = 0; i < forecastTimeSeries.length; i++) {
       let series = this.mapPerTimeSeries(forecastTimeSeries[i]);
-      //noinspection TypeScriptUnresolvedFunction
-      if (this.isSameHour(new Date(series.validTime), this.now)) {
+      let validTime = new Date(series.validTime);
+      if (this.isSameHour(validTime, this.now)) {
         series.current = true;
 
       }
@@ -78,7 +78,7 @@ export class WeatherService {
 
   private removeZoneFromDate(forecastTimeSeries: any): TimeSeries[] {
     return forecastTimeSeries.map((series) => {
-      series.validTime = series.validTime.slice(0, 19);
+      series.validTime = series.validTime.slice(0, 19).replace('T', ' ');
       return series;
     });
   }
@@ -112,10 +112,9 @@ export class WeatherService {
 
   private isTimeSeriesInRange(forecastTimeSeries: TimeSeries, hoursDiff: number = 12): boolean {
     let limit = moment().add(hoursDiff, 'h');
-    //noinspection TypeScriptUnresolvedFunction
     let validTime = new Date(forecastTimeSeries.validTime);
     return moment(forecastTimeSeries.validTime) <= limit
-      && this.isSameHourOrAfter(validTime, this.now);
+       && this.isSameHourOrAfter(validTime, this.now);
   }
 
 
@@ -133,7 +132,6 @@ export class WeatherService {
 
   public getCurrentWeather(weatherForecast: WeatherForecast): TimeSeries {
     for (let i = 0; i < weatherForecast.timeSeries.length; i++) {
-      //noinspection TypeScriptUnresolvedFunction
       if (weatherForecast.timeSeries[i].current) {
         return weatherForecast.timeSeries[i];
       }

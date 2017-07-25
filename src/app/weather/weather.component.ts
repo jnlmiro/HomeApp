@@ -2,7 +2,7 @@
  * Created by jorgma on 2017-07-09.
  */
 
-import {Component, OnInit, NgZone} from "@angular/core";
+import {Component, OnInit, AfterViewInit, OnDestroy} from "@angular/core";
 import {WeatherService} from "./weather.service";
 import {WeatherForecast} from "./weather.model";
 
@@ -10,24 +10,37 @@ import {WeatherForecast} from "./weather.model";
   selector: 'weather',
   templateUrl: 'weather.component.html'
 })
-export class WeatherComponent implements OnInit {
-  weatherForecast: WeatherForecast = new WeatherForecast();
+export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  constructor(private weatherService: WeatherService, private zone:NgZone) {
+
+  weatherForecast: WeatherForecast;
+  intervalId: number;
+
+
+  constructor(private weatherService: WeatherService) {
   }
 
   ngOnInit() {
-    this.getWeatherForecast();
+  }
+
+
+  ngAfterViewInit(): void {
+    this.intervalId = setInterval(() => this.getWeatherForecast(), 3000);
   }
 
 
   public getWeatherForecast() {
     this.weatherService.getWeatherForecast()
-      .subscribe((weatherForecast) => {
-        this.weatherForecast = weatherForecast;
-        /*WTF is making things go out of NG2*/
-        this.zone.run(() => {});
-      });
+      .then((res) => {
+        return this.weatherService.mapForecast(res);
+      })
+      .then((weatherForecast) => {
+          this.weatherForecast = weatherForecast;
+      })
+
   }
 
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
+  }
 }

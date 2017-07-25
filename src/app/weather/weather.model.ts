@@ -1,4 +1,3 @@
-import {copyObj} from "@angular/animations/browser/src/util";
 /**
  * Created by jorgma on 2017-07-09.
  */
@@ -57,7 +56,7 @@ export class Geometry {
 }
 
 export class TimeSeries {
-  validTime: Date;
+  validTime: string;
   current: boolean = false;
   parameters: Parameters;
 }
