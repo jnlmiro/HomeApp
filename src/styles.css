@@ -52,4 +52,14 @@ body {
   background-color: #cccccc;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: inherit;
+}
+
+.row {
+  margin-bottom: 10px !important;
+}
 

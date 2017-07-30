@@ -9,19 +9,22 @@ ul.timeseries {
   overflow: hidden;
   overflow-x: scroll;
   font-weight: 500;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: inherit;
+  }
+
   li {
     margin:2px;
     padding: 5px;
-    //background-color: rgba(84, 129, 182, 0.16);
     min-width: 25%;
 
     .hour {
       padding-left: 5px;
     }
-
-
-
-
   }
 }
 

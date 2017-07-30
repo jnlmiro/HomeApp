@@ -26,7 +26,7 @@ export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.getWeatherForecast();
-    // this.intervalId = setInterval(() => , 3000);
+    this.intervalId = setInterval(() => this.getWeatherForecast(), 30*60000);
   }
 
 
@@ -37,7 +37,6 @@ export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
       })
       .then((weatherForecast) => {
         this.weatherForecast = weatherForecast;
-        console.log(this.weatherForecast);
       })
 
   }
