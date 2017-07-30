@@ -23,7 +23,7 @@ const TYPE_IMGS = {
 };
 
 
-const NUMBER_OF_DEPARTURES = 5;
+const NUMBER_OF_DEPARTURES = 3;
 
 @Injectable()
 export class SlDepartureService {

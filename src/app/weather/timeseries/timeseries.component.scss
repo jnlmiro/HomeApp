@@ -1,0 +1,87 @@
+/**
+ * Created by jorgma on 2017-07-28.
+ */
+
+@import "../weather.component.scss";
+
+ul.timeseries {
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  font-weight: 500;
+  li {
+    margin:2px;
+    padding: 5px;
+    //background-color: rgba(84, 129, 182, 0.16);
+    min-width: 25%;
+
+    .hour {
+      padding-left: 5px;
+    }
+
+
+
+
+  }
+}
+
+
+.weather-img {
+  &.clear-sky {
+    @include weather-background-img("clear.svg", 40);
+  }
+
+  &.nearly-clear-sky {
+    @include weather-background-img("mostlysunny.svg", 40);
+
+  }
+
+  &.variable-cloudiness {
+    @include weather-background-img("partlycloudy.svg", 40);
+  }
+
+  &.halfclear-sky {
+    @include weather-background-img("mostlycloudy.svg", 40);
+  }
+
+  &.cloudy-sky {
+    @include weather-background-img("cloudy.svg", 40);
+  }
+
+  &.fog {
+    @include weather-background-img("fog.svg", 40);
+  }
+
+  &.chance-of-rain {
+    @include weather-background-img("chancerain.svg", 40);
+  }
+
+  &.rain {
+    @include weather-background-img("rain.svg", 40);
+  }
+
+  &.thunderstorm {
+    @include weather-background-img("tstorms.svg", 40);
+  }
+
+  &.thunder {
+    @include weather-background-img("thunder.svg", 40);
+  }
+
+  &.chancesleet {
+    @include weather-background-img("chancesleet.svg", 40);
+  }
+
+  &.sleet {
+    @include weather-background-img("sleet.svg", 40);
+  }
+
+  &.chancesnow {
+    @include weather-background-img("chancesnow.svg", 40)
+  }
+
+  &.snow {
+    @include weather-background-img("snow.svg", 40)
+  }
+}
+

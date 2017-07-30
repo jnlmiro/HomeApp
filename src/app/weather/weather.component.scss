@@ -1,0 +1,22 @@
+@mixin weather-background-img($imgname, $size:62) {
+  background: url("'../../../assets/images/weather/#{$imgname}") no-repeat 0 0;
+  display: inline-block;
+  min-height: #{$size}px;
+  min-width: #{$size}px;
+  background-size: 100% 100%;
+}
+
+.weather-status {
+  font-weight: bold;
+  color: black;
+}
+
+.temperature {
+  font-size: large;
+  color: #000;
+  font-weight: bold;
+  padding-left: 20px;
+  &:after {
+    content: "	\002103";
+  }
+}

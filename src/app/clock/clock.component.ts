@@ -19,7 +19,7 @@ export class ClockComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     moment.locale('se');
-    this.intervalId = setInterval(() => this.updateCurrentTime())
+    this.intervalId = setInterval(() => this.updateCurrentTime());
   }
 
 

@@ -1,19 +1,17 @@
-<div class="row current-weather" *ngIf="currentTimeSeries">
-  <div class="col s12">
-    <div class="info">
-      <p class="city">Stockholm</p>
-      <p>{{currentTimeSeries.validTime | date:"yyyy-MM-dd HH:mm" }}</p>
-      <div class="weather-status"><p>{{weather_symbol[currentTimeSeries.parameters.Wsymb2.value].name.se}}</p></div>
+<div class="col s12 current-weather" *ngIf="currentTimeSeries">
+  <div class="info">
+    <p class="city">Stockholm</p>
+    <p>{{currentTimeSeries.validTime | date:"yyyy-MM-dd HH:mm" }}</p>
+    <div class="weather-status"><p>{{weather_symbol[currentTimeSeries.parameters.Wsymb2.value].name.se}}</p></div>
 
-      <div class="row">
-        <div class="col s12">
-          <div class="valign-wrapper">
-            <div>
-              <span class="weather-img {{weather_symbol[currentTimeSeries.parameters.Wsymb2.value].imgclass}}"></span>
-            </div>
-            <div>
-              <div class="temperature">{{currentTimeSeries.parameters.t.value}}</div>
-            </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="valign-wrapper">
+          <div>
+            <span class="weather-img {{getWeatherImageClass()}}"></span>
+          </div>
+          <div>
+            <div class="temperature">{{currentTimeSeries.parameters.t.value}}</div>
           </div>
         </div>
       </div>

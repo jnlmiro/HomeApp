@@ -1,5 +1,10 @@
 <div>
   <div *ngIf="weatherForecast">
-    <current-weather [currentWeather]="weatherForecast"></current-weather>
+    <div class="row">
+      <current-weather [currentWeather]="weatherForecast"></current-weather>
+    </div>
+    <div class="row">
+      <timeseries [weather]="weatherForecast"></timeseries>
+    </div>
   </div>
 </div>

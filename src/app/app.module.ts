@@ -1,5 +1,6 @@
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
+//noinspection TypeScriptCheckImport
 import {MaterializeModule} from "angular2-materialize";
 import {AppComponent} from "./app.component";
 import {PageNotFoundComponent} from "./page-not-found.component";

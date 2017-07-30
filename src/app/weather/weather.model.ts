@@ -59,6 +59,7 @@ export class TimeSeries {
   validTime: string;
   current: boolean = false;
   parameters: Parameters;
+  hour:number;
 }
 
 export class Parameters {
@@ -66,5 +67,5 @@ export class Parameters {
   levelType: string;
   level: number;
   unit: string;
-  value: number
+  value: number;
 }

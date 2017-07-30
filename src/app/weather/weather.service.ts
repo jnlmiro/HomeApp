@@ -7,7 +7,7 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
-import {WeatherForecast, Geometry, TimeSeries, Parameters, PARAMS} from "./weather.model";
+import {WeatherForecast, Geometry, TimeSeries, Parameters, PARAMS, WEATHER_SYMBOL} from "./weather.model";
 import * as moment from "moment";
 import 'rxjs/add/operator/map';
 
@@ -19,13 +19,14 @@ const LON = 18.0686;
 export class WeatherService {
   now: Date;
   url = `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${LON}/lat/${LAT}/data.json`;
+  weather_symbol = WEATHER_SYMBOL;
 
   constructor(private http: Http) {
     this.now = new Date();
   }
 
 
-  public getWeatherForecast():Promise<any> {
+  public getWeatherForecast(): Promise<any> {
     return this.http.get(this.url).toPromise();
 
   }
@@ -86,12 +87,13 @@ export class WeatherService {
   private mapPerTimeSeries(series: any): TimeSeries {
     let forecastSeries: TimeSeries = new TimeSeries();
     forecastSeries.validTime = series.validTime;
+    forecastSeries.hour = new Date(series.validTime).getHours();
     forecastSeries.parameters = this.mapTimeSeriesParameters(series.parameters);
     return forecastSeries;
   }
 
   private mapTimeSeriesParameters(parameters: any): Parameters {
-    let forecastParametersArr:any = {};
+    let forecastParametersArr: any = {};
     let interestingParams = Object.keys(PARAMS);
 
     parameters = parameters.filter((param => {
@@ -114,7 +116,7 @@ export class WeatherService {
     let limit = moment().add(hoursDiff, 'h');
     let validTime = new Date(forecastTimeSeries.validTime);
     return moment(forecastTimeSeries.validTime) <= limit
-       && this.isSameHourOrAfter(validTime, this.now);
+      && this.isSameHourOrAfter(validTime, this.now);
   }
 
 
@@ -136,6 +138,12 @@ export class WeatherService {
         return weatherForecast.timeSeries[i];
       }
     }
-
   }
+
+  public getWeatherImageClass(timeSeries:TimeSeries):string {
+    console.log(timeSeries);
+    return this.weather_symbol[timeSeries.parameters['Wsymb2'].value].imgclass;
+  }
+
+
 }

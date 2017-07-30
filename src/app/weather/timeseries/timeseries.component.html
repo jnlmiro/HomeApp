@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="col s12 no-padding-sides" *ngIf="weather">
+  <ul class="timeseries">
+    <li class="item center card grey lighten-5" *ngFor="let series of weather.timeSeries">
+      <div>
+        <div>{{series.hour}}:00</div>
+        <div>
+          <span class="weather-img {{getWeatherImageClass(series)}}"></span>
+        </div>
+        <div>
+          <div>{{series.parameters.t.value}}</div>
+          <div>{{series.parameters.pmean.value}} mm</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

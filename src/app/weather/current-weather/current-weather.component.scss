@@ -1,11 +1,5 @@
+@import "../weather.component.scss";
 
-@mixin weather-background-img($imgname) {
-  background: url("'../../../assets/images/weather/#{$imgname}") no-repeat 0 0;
-  display: inline-block;
-  min-height: 62px;
-  min-width: 62px;
-  background-size: 100% 100%;
-}
 
 
 .current-weather {
@@ -17,19 +11,6 @@
     }
     .city {
       font-size: x-large;
-    }
-    .weather-status {
-      font-weight: bold;
-      color:black;
-    }
-    .temperature {
-      font-size: large;
-      color: #000;
-      font-weight: bold;
-      padding-left: 20px;
-      &:after {
-        content: "	\002103";
-      }
     }
   }
 
