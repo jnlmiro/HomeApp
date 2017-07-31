@@ -1,5 +1,5 @@
 <div>
-  <h4 class="bluish">{{stationName}}</h4>
+  <h4 class="bluish station-name">{{stationName}}</h4>
   <ul *ngIf="slDeparture">
     <li [@fadeIn]="''" *ngFor="let departureGroup of slDeparture.groups | filterDepartures:departureGroupType">
       <div *ngIf="departureGroup.departures.length">
