@@ -36,7 +36,6 @@ export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
         return this.weatherService.mapForecast(res);
       })
       .then((weatherForecast) => {
-        this.weatherForecast = null;
         this.weatherForecast = weatherForecast;
       })
 

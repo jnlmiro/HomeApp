@@ -22,7 +22,7 @@ export class WeatherService {
   weather_symbol = WEATHER_SYMBOL;
 
   constructor(private http: Http) {
-    this.now = new Date();
+
   }
 
 
@@ -33,6 +33,7 @@ export class WeatherService {
 
 
   public mapForecast(res: any): Promise<WeatherForecast> {
+    this.now = new Date();
     let forecast = res.json();
     let weatherForecast = new WeatherForecast();
     weatherForecast.approvedTime = forecast.approvedTime;
@@ -140,8 +141,7 @@ export class WeatherService {
     }
   }
 
-  public getWeatherImageClass(timeSeries:TimeSeries):string {
-    console.log(timeSeries);
+  public getWeatherImageClass(timeSeries: TimeSeries): string {
     return this.weather_symbol[timeSeries.parameters['Wsymb2'].value].imgclass;
   }
 
