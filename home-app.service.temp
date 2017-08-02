@@ -1,0 +1,13 @@
+[Unit]
+Description=Home Application
+
+[Service]
+EnvironmentFile=-/etc/default/home-app
+ExecStart=<path to start-up script>/start-up.sh
+WorkingDirectory=<application working directory>
+LimitNOFILE=4096
+IgnoreSIGPIPE=false
+KillMode=process
+
+[Install]
+WantedBy=default.target
