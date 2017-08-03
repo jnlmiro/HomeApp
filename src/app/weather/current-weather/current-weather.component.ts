@@ -18,7 +18,6 @@ export class CurrentWeatherComponent implements OnInit {
 
   @Input() set currentWeather(weather: WeatherForecast) {
     if (weather.currentTimeSeries) {
-      this.currentTimeSeries = new TimeSeries();
       this.currentTimeSeries = weather.currentTimeSeries;
     }
   }
