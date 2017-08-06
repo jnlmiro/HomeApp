@@ -95,11 +95,6 @@ export class WeatherService {
 
   private mapTimeSeriesParameters(parameters: any): Parameters {
     let forecastParametersArr: any = {};
-    let interestingParams = Object.keys(PARAMS);
-
-    parameters = parameters.filter((param => {
-      return interestingParams.indexOf(param.name) >= 0;
-    }));
 
     for (let i = 0; i < parameters.length; i++) {
       let forecastParameters: Parameters = new Parameters();
@@ -143,6 +138,46 @@ export class WeatherService {
 
   public getWeatherImageClass(timeSeries: TimeSeries): string {
     return this.weather_symbol[timeSeries.parameters['Wsymb2'].value].imgclass;
+  }
+
+
+  public getMinMaxParameterValue(timeSeries: TimeSeries[], paramName: string, min: boolean = false): number {
+    let minMaxParamValue: number;
+
+    if (timeSeries.length) {
+      minMaxParamValue = timeSeries[0].parameters[paramName].value;
+    }
+
+    for (let i = 0; i < timeSeries.length; i++) {
+
+      if (this.isTimeSeriesFromToday(timeSeries[i])) {
+        if (min) {
+          if (timeSeries[i].parameters[paramName].value < minMaxParamValue) {
+            minMaxParamValue = timeSeries[i].parameters[paramName].value;
+          }
+        } else {
+          if (timeSeries[i].parameters[paramName].value > minMaxParamValue) {
+            minMaxParamValue = timeSeries[i].parameters[paramName].value;
+          }
+        }
+      }
+    }
+    return minMaxParamValue;
+  }
+
+
+  public getMeanParameterValue(timeSeries: TimeSeries[], paramName: string): number {
+    if (!timeSeries.length) {
+      return 0;
+    }
+
+    let sum = timeSeries.reduce((previous, current) => previous + current.parameters[paramName].value, 0);
+    return Math.round((sum / timeSeries.length) * 10) / 10;
+  }
+
+
+  private isTimeSeriesFromToday(timeSeries: TimeSeries) {
+    return timeSeries.validTime.slice(0, 10) === this.now.toJSON().slice(0, 10);
   }
 
 

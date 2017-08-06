@@ -74,6 +74,15 @@
     }
   }
 
+
+
+  .temperature {
+    @extend .temperature;
+    font-size: large;
+    color: #000;
+    font-weight: bold;
+    padding-left: 20px;
+  }
 }
 
 

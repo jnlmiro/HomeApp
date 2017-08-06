@@ -4,11 +4,12 @@
 
 import {Component, OnInit, AfterViewInit, OnDestroy} from "@angular/core";
 import {WeatherService} from "./weather.service";
-import {WeatherForecast} from "./weather.model";
+import {WeatherForecast, TimeSeries} from "./weather.model";
 
 @Component({
   selector: 'weather',
-  templateUrl: 'weather.component.html'
+  templateUrl: 'weather.component.html',
+  styleUrls: ['weather.component.scss']
 })
 export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -26,7 +27,7 @@ export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.getWeatherForecast();
-    this.intervalId = setInterval(() => this.getWeatherForecast(), 30*60000);
+    this.intervalId = setInterval(() => this.getWeatherForecast(), 30 * 60000);
   }
 
 
@@ -39,6 +40,15 @@ export class WeatherComponent implements OnInit, AfterViewInit, OnDestroy {
         this.weatherForecast = weatherForecast;
       })
 
+  }
+
+
+  public getMinMaxParameterValue(timeSeries: TimeSeries[], paramName: string, min: boolean): number {
+    return this.weatherService.getMinMaxParameterValue(timeSeries, paramName, min);
+  }
+
+  public getMeanParameterValue(timeSeries: TimeSeries[], paramName: string): number {
+    return this.weatherService.getMeanParameterValue(timeSeries, paramName);
   }
 
   ngOnDestroy(): void {

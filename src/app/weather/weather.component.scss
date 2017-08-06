@@ -12,11 +12,31 @@
 }
 
 .temperature {
-  font-size: large;
-  color: #000;
-  font-weight: bold;
-  padding-left: 20px;
   &:after {
     content: "	\002103";
   }
 }
+
+
+.precipitation {
+  &:after {
+    content: " mm";
+  }
+}
+
+.todays-weather {
+  .title {
+    @extend .weather-status;
+  }
+
+  th {
+    color: rgb(117, 117, 117);
+  }
+
+  th, td {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+}
+
